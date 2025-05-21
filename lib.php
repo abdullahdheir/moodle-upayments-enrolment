@@ -122,6 +122,54 @@ class enrol_upayment_plugin extends enrol_plugin {
         }
         return $icons;
     }
+    public function use_standard_editing_ui() {
+        return true;
+    }
+    public function roles_protected() {
+        // Users with role assign cap may tweak the roles later.
+        return false;
+    }
+    public function allow_unenrol(stdClass $instance) {
+        // Users with unenrol cap may unenrol other users manually.
+        return true;
+    }
+    public function allow_manage(stdClass $instance) {
+        // Users with manage cap may tweak period and status.
+        return true;
+    }
+    public function show_enrolme_link(stdClass $instance) {
+        // Show "Enrol me" link if the user can enrol via this method.
+        return true;
+    }
+    public function can_add_instance($courseid) {
+        $context = context_course::instance($courseid, MUST_EXIST);
+        if (!has_capability('moodle/course:enrolconfig', $context) || !has_capability('enrol/upayment:config', $context)) {
+            return false;
+        }
+        return true;
+    }
+    public function get_instance_name($instance) {
+        if (empty($instance->name)) {
+            return get_string('pluginname', 'enrol_upayment');
+        } else {
+            return format_string($instance->name);
+        }
+    }
+    public function update_instance($instance, $data) {
+        // Add any custom update logic here if needed.
+        return parent::update_instance($instance, $data);
+    }
+    public function can_delete_instance($instance) {
+        $context = context_course::instance($instance->courseid);
+        return has_capability('enrol/upayment:config', $context);
+    }
+    public function can_hide_show_instance($instance) {
+        $context = context_course::instance($instance->courseid);
+        return has_capability('enrol/upayment:config', $context);
+    }
+    public function is_csv_upload_supported(): bool {
+        return true;
+    }
 }
 
 function enrol_upayment_make_api_request($endpoint, $data = null) {

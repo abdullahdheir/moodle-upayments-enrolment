@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -26,7 +25,6 @@
  * @website    https://upayments.com
  */
 
-<?php
 defined('MOODLE_INTERNAL') || die();
 
 class enrol_upayment_plugin extends enrol_plugin {

@@ -53,7 +53,7 @@ $payment_data = [
     'language' => current_language(),
     'returnUrl' => $CFG->wwwroot . '/enrol/upayment/success.php?instanceid=' . $instance->id . '&sesskey=' . sesskey(),
     'cancelUrl' => $CFG->wwwroot . '/enrol/upayment/cancel.php?instanceid=' . $instance->id . '&sesskey=' . sesskey(),
-    'notificationUrl' => $CFG->wwwroot . '/enrol/upayment/notification.php',
+    'notificationUrl' => $CFG->wwwroot . '/enrol/upayment/notification.php?instanceid=' . $instance->id . '&sesskey=' . sesskey(),
 ];
 
 error_log(json_encode($payment_data, true));

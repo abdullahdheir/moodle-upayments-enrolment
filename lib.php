@@ -255,9 +255,9 @@ function enrol_upayment_make_api_request($endpoint, $data = null) {
         curl_close($ch);
         
         // Check HTTP status code (e.g., 200 for success)
-        if ($httpcode !== 200) {
-             error_log("UPayments API HTTP Error: " . $httpcode . " Response: " . $response);
-             throw new moodle_exception('api_error_http', 'enrol_upayment', '', "HTTP Status Code: " . $httpcode);
+        if ($httpcode < 200 || $httpcode >= 300) {
+            error_log("UPayments API HTTP Error: " . $httpcode . " Response: " . $response);
+            throw new moodle_exception('api_error_http', 'enrol_upayment', '', "HTTP Status Code: " . $httpcode);
         }
         
         // Decode response

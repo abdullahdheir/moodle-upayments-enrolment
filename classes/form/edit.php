@@ -13,6 +13,7 @@ class edit extends \moodleform {
         $mform->addElement('text', 'cost', get_string('cost', 'enrol_upayment'), array('size' => 8));
         $mform->setType('cost', PARAM_FLOAT);
         $mform->addRule('cost', null, 'required', null, 'client');
+        $mform->addHelpButton('cost', 'cost', 'enrol_upayment');
 
         $currencies = [
             'KWD' => 'KWD',
@@ -25,6 +26,13 @@ class edit extends \moodleform {
         ];
         $mform->addElement('select', 'currency', get_string('currency', 'enrol_upayment'), $currencies);
         $mform->setDefault('currency', 'KWD');
+        $mform->addHelpButton('currency', 'currency', 'enrol_upayment');
+
+        // Set default values for editing
+        if (isset($instance->id)) {
+            $mform->setDefault('cost', $instance->cost);
+            $mform->setDefault('currency', $instance->currency);
+        }
 
         $this->add_action_buttons(true, get_string('addmethod', 'enrol'));
     }

@@ -18,11 +18,7 @@ if (is_enrolled($context, $USER)) {
     redirect(new moodle_url('/course/view.php', array('id' => $course->id)));
 }
 
-// Get the course cost from teacher settings
-$teacher_cost = $DB->get_field('enrol_upayment_costs', 'cost',
-    ['courseid' => $instance->courseid, 'userid' => $instance->customint1]);
-
-// If no teacher cost set, use default cost
+// Use the instance cost directly
 $cost = $instance->cost;
 
 // Prepare payment data

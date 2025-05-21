@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="enrol/upayment/db" VERSION="2025052107" COMMENT="XMLDB file for Upayments enrolment plugin">
+    <TABLES>
+        <TABLE NAME="enrol_upayment_transactions" COMMENT="Stores Upayments transaction records">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="instanceid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="amount" TYPE="number" LENGTH="10,2" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="currency" TYPE="char" LENGTH="3" NOTNULL="true" DEFAULT="KWD" SEQUENCE="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="pending" SEQUENCE="false"/>
+                <FIELD NAME="is_sandbox" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="payment_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="result" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="post_date" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="tran_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="ref" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="track_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="auth" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="order_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="requested_order_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="refund_order_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="payment_type" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="invoice_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="transaction_date" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="receipt_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="trn_udf" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="userid" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+                <KEY NAME="instanceid" TYPE="foreign" FIELDS="instanceid" REFTABLE="enrol" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="status" UNIQUE="false" FIELDS="status"/>
+                <INDEX NAME="timecreated" UNIQUE="false" FIELDS="timecreated"/>
+                <INDEX NAME="track_id" UNIQUE="false" FIELDS="track_id"/>
+                <INDEX NAME="payment_id" UNIQUE="false" FIELDS="payment_id"/>
+                <INDEX NAME="is_sandbox" UNIQUE="false" FIELDS="is_sandbox"/>
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB> 

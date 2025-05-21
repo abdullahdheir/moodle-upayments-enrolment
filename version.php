@@ -25,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2025052107;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2025052108;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2022041900;        // Requires this Moodle version (4.0).
 $plugin->component = 'enrol_upayment';  // Full name of the plugin (used for diagnostics).
 $plugin->maturity  = MATURITY_STABLE;   // This is considered as stable code.
-$plugin->release   = '1.0.7';           // Human-readable version name.
+$plugin->release   = '1.0.8';           // Human-readable version name.

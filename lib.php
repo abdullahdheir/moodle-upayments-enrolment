@@ -37,12 +37,8 @@ class enrol_upayment_plugin extends enrol_plugin {
         if (is_enrolled($context, $USER)) {
             return '';
         }
-        // Get the course cost from teacher settings
-        $teacher_cost = $DB->get_field('enrol_upayment_costs', 'cost',
-            ['courseid' => $instance->courseid, 'userid' => $instance->customint1]);
-        // If no teacher cost set, use default cost
-        $cost = $teacher_cost ?: $instance->cost;
-        $cost = format_float($cost, 2, true) . ' ' . $instance->currency;
+        // Use the instance cost directly
+        $cost = format_float($instance->cost, 2, true) . ' ' . $instance->currency;
         $url = new moodle_url('/enrol/upayment/pay.php', ['instanceid' => $instance->id, 'sesskey' => sesskey()]);
         $btn = new single_button($url, get_string('paybutton', 'enrol_upayment'));
         $html = html_writer::tag('p', get_string('enrolcost', 'enrol_upayment').": ".$cost);
@@ -156,7 +152,8 @@ class enrol_upayment_plugin extends enrol_plugin {
         }
     }
     public function update_instance($instance, $data) {
-        // Add any custom update logic here if needed.
+        $instance->cost = $data->cost;
+        $instance->currency = $data->currency;
         return parent::update_instance($instance, $data);
     }
     public function can_delete_instance($instance) {
@@ -169,6 +166,37 @@ class enrol_upayment_plugin extends enrol_plugin {
     }
     public function is_csv_upload_supported(): bool {
         return true;
+    }
+    public function edit_instance_form($instance, MoodleQuickForm $mform, $context) {
+        $mform->addElement('text', 'cost', get_string('cost', 'enrol_upayment'), array('size' => 8));
+        $mform->setType('cost', PARAM_FLOAT);
+        $mform->addRule('cost', null, 'required', null, 'client');
+        $mform->addHelpButton('cost', 'cost', 'enrol_upayment');
+
+        $currencies = [
+            'KWD' => 'KWD',
+            'USD' => 'USD',
+            'EUR' => 'EUR',
+            'SAR' => 'SAR',
+            'AED' => 'AED',
+            'GBP' => 'GBP',
+        ];
+        $mform->addElement('select', 'currency', get_string('currency', 'enrol_upayment'), $currencies);
+        $mform->setDefault('currency', 'KWD');
+        $mform->addHelpButton('currency', 'currency', 'enrol_upayment');
+
+        if ($instance->id) {
+            $mform->setDefault('cost', $instance->cost);
+            $mform->setDefault('currency', $instance->currency);
+        }
+    }
+
+    public function edit_instance_validation($data, $files, $instance, $context) {
+        $errors = array();
+        if ($data['cost'] < 0) {
+            $errors['cost'] = get_string('costerror', 'enrol_upayment');
+        }
+        return $errors;
     }
 }
 

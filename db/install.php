@@ -1,13 +1,13 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-function xmldb_enroll_upayment_install() {
+function xmldb_enrol_upayment_install() {
     global $DB;
     // Nothing here; optional table can be added later.
 
     // Create transaction log table
     $dbman = $DB->get_manager();
-    $table = new xmldb_table('enroll_upayment_transactions');
+    $table = new xmldb_table('enrol_upayment_transactions');
 
     $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
     $table->add_field('userid', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, '0');
@@ -48,7 +48,7 @@ function xmldb_enroll_upayment_install() {
     }
 
     // Create teacher costs table
-    $table = new xmldb_table('enroll_upayment_costs');
+    $table = new xmldb_table('enrol_upayment_costs');
     if (!$dbman->table_exists($table)) {
         $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
         $table->add_field('courseid', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);

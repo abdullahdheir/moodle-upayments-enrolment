@@ -51,7 +51,7 @@ The UPayments enrolment plugin for Moodle enables course enrolment through the U
 ### For Teachers
 1. Set course-specific costs
 2. Monitor student enrolments
-3. View payment status for enrolled students
+3. View payment status for enroled students
 
 ### For Students
 1. Select the course for enrolment

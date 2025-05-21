@@ -13,13 +13,13 @@ $instance = $DB->get_record('enrol', array('id' => $instanceid, 'enrol' => 'upay
 $course = $DB->get_record('course', array('id' => $instance->courseid), '*', MUST_EXIST);
 $context = context_course::instance($course->id, MUST_EXIST);
 
-// Check if user is already enrolled
-if (is_enrolled($context, $USER)) {
+// Check if user is already enroled
+if (is_enroled($context, $USER)) {
     redirect(new moodle_url('/course/view.php', array('id' => $course->id)));
 }
 
 // Get the course cost from teacher settings
-$teacher_cost = $DB->get_field('enrol_upayment_costs', 'cost', 
+$teacher_cost = $DB->get_field('enrol_upayment_costs', 'cost',
     ['courseid' => $instance->courseid, 'userid' => $instance->customint1]);
 
 // If no teacher cost set, use default cost
@@ -49,7 +49,7 @@ $payment_data = array(
 try {
     // Make API request
     $response = enrol_upayment_make_api_request('charge', $payment_data);
-    
+
     if (isset($response['data']['link'])) {
         // Redirect to payment page
         redirect($response['data']['link']);

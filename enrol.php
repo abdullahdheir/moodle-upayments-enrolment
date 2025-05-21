@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-class enroll_upayment_plugin extends enrol_plugin {
+class enrol_upayment_plugin extends enrol_plugin {
 
     public function enrol_page_hook(stdClass $instance) {
         global $USER, $OUTPUT, $DB;
@@ -32,18 +32,18 @@ class enroll_upayment_plugin extends enrol_plugin {
             return '';
         }
         $context = context_course::instance($instance->courseid);
-        if (is_enrolled($context, $USER)) {
+        if (is_enroled($context, $USER)) {
             return '';
         }
 
         // Get the course cost from teacher settings
-        $teacher_cost = $DB->get_field('enrol_upayment_costs', 'cost', 
+        $teacher_cost = $DB->get_field('enrol_upayment_costs', 'cost',
             ['courseid' => $instance->courseid, 'userid' => $instance->customint1]);
-        
+
         // If no teacher cost set, use default cost
         $cost = $teacher_cost ?: $instance->cost;
         $cost = format_float($cost, 2, true) . ' ' . $instance->currency;
-        
+
         $url = new moodle_url('/enrol/upayment/pay.php', ['instanceid' => $instance->id, 'sesskey' => sesskey()]);
         $btn = new single_button($url, get_string('paybutton', 'enrol_upayment'));
         $html = html_writer::tag('p', get_string('enrolcost', 'enrol_upayment').": ".$cost);
@@ -86,8 +86,9 @@ class enroll_upayment_plugin extends enrol_plugin {
     /**
      * Add new instance of enrol plugin.
      * @param stdClass $course
-     * @param array instance fields
+     * @param array|null $fields instance fields
      * @return int id of new instance, null if can not be created
+     * @throws coding_exception
      */
     public function add_instance($course, array $fields = NULL) {
         $fields = (array)$fields;
@@ -108,6 +109,7 @@ class enroll_upayment_plugin extends enrol_plugin {
      *
      * @param course_enrolment_manager $manager
      * @return enrol_user_button
+     * @throws coding_exception
      */
     public function get_manual_enrol_button(course_enrolment_manager $manager) {
         $instance = null;
@@ -137,6 +139,8 @@ class enroll_upayment_plugin extends enrol_plugin {
      * Returns edit icons for the page with list of instances
      * @param stdClass $instance
      * @return array
+     * @throws \core\exception\moodle_exception
+     * @throws coding_exception
      */
     public function get_action_icons(stdClass $instance) {
         global $OUTPUT;

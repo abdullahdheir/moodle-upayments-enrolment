@@ -17,7 +17,7 @@
 /**
  * Language strings for the Upayments enrolment plugin.
  *
- * @package    enroll_upayment
+ * @package    enrol_upayment
  * @copyright  2025 Abdullah Dheir
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,7 +25,7 @@
 $string['pluginname'] = 'Upayments enrolment';
 $string['pluginname_desc'] = 'Enrol users using Upayments payment gateway';
 $string['upayment:config'] = 'Configure Upayments enrolment instances';
-$string['upayment:manage'] = 'Manage enrolled users';
+$string['upayment:manage'] = 'Manage enroled users';
 $string['upayment:unenrol'] = 'Unenrol users from course';
 $string['upayment:unenrolself'] = 'Unenrol self from the course';
 $string['upayment:viewtransactions'] = 'View transaction logs';
@@ -40,32 +40,32 @@ $string['currency'] = 'Currency';
 $string['defaultrole'] = 'Default role assignment';
 $string['defaultrole_desc'] = 'Select role which should be assigned to users during Upayments enrolments';
 $string['enrolenddate'] = 'End date';
-$string['enrolenddate_help'] = 'If enabled, users can be enrolled until this date only.';
+$string['enrolenddate_help'] = 'If enabled, users can be enroled until this date only.';
 $string['enrolenddaterror'] = 'Enrolment end date cannot be earlier than start date';
 $string['enrolperiod'] = 'Enrolment duration';
 $string['enrolperiod_desc'] = 'Default length of time that the enrolment is valid. If set to zero, the enrolment duration will be unlimited by default.';
-$string['enrolperiod_help'] = 'Length of time that the enrolment is valid, starting with the moment the user is enrolled. If disabled, the enrolment duration will be unlimited.';
+$string['enrolperiod_help'] = 'Length of time that the enrolment is valid, starting with the moment the user is enroled. If disabled, the enrolment duration will be unlimited.';
 $string['enrolstartdate'] = 'Start date';
-$string['enrolstartdate_help'] = 'If enabled, users can be enrolled from this date onward only.';
+$string['enrolstartdate_help'] = 'If enabled, users can be enroled from this date onward only.';
 $string['expiredaction'] = 'Enrolment expiration action';
 $string['expiredaction_help'] = 'Select action to carry out when user enrolment expires. Please note that some user data and settings are purged from course during course unenrolment.';
-$string['expirymessageenrollersubject'] = 'Upayments enrolment expiry notification';
-$string['expirymessageenrollerbody'] = 'Upayments enrolment in the course \'{$a->course}\' will expire within the next {$a->threshold} for the following users:
+$string['expirymessageenrolersubject'] = 'Upayments enrolment expiry notification';
+$string['expirymessageenrolerbody'] = 'Upayments enrolment in the course \'{$a->course}\' will expire within the next {$a->threshold} for the following users:
 
 {$a->users}
 
 To extend their enrolment, go to {$a->extendurl}';
-$string['expirymessageenrolledsubject'] = 'Upayments enrolment expiry notification';
-$string['expirymessageenrolledbody'] = 'Dear {$a->user},
+$string['expirymessageenroledsubject'] = 'Upayments enrolment expiry notification';
+$string['expirymessageenroledbody'] = 'Dear {$a->user},
 
 This is a notification that your enrolment in the course \'{$a->course}\' is due to expire on {$a->timeend}.
 
-If you need help, please contact {$a->enroller}.';
+If you need help, please contact {$a->enroler}.';
 $string['sendpaymentbutton'] = 'Send payment via Upayments';
 $string['paymentrequired'] = 'You must pay {$a->currency} {$a->cost} to enrol in this course.';
 $string['upaymentaccepted'] = 'Upayments payments accepted';
 $string['upayment:config'] = 'Configure Upayments enrol instances';
-$string['upayment:manage'] = 'Manage enrolled users';
+$string['upayment:manage'] = 'Manage enroled users';
 $string['upayment:unenrol'] = 'Unenrol users from course';
 $string['upayment:unenrolself'] = 'Unenrol self from the course';
 $string['upayment:viewtransactions'] = 'View transaction logs';
@@ -168,7 +168,7 @@ $string['transaction_export_encoding_pdf'] = 'UTF-8';
 // Teacher cost strings
 $string['teachercost'] = 'Teacher Cost';
 $string['teachercost_desc'] = 'Cost set by teacher for this course';
-$string['teachercost_help'] = 'The cost set by the teacher for enrolling in this course. This will override the default cost if set.';
+$string['teachercost_help'] = 'The cost set by the teacher for enroling in this course. This will override the default cost if set.';
 $string['teachercost_not_set'] = 'No teacher cost set';
 $string['teachercost_set'] = 'Teacher cost set to {$a}';
 $string['teachercost_updated'] = 'Teacher cost updated to {$a}';
@@ -215,7 +215,7 @@ $string['redirecting_to_payment'] = 'Redirecting to payment gateway...';
 $string['payment_processing'] = 'Your payment is being processed. Please do not close this window.';
 $string['payment_success'] = 'Payment successful! Redirecting to course...';
 $string['payment_error'] = 'An error occurred while processing your payment. Please try again.';
-$string['payment_cancelled'] = 'Payment was cancelled. Please try again if you wish to enroll in this course.';
+$string['payment_cancelled'] = 'Payment was cancelled. Please try again if you wish to enrol in this course.';
 $string['payment_timeout'] = 'Payment processing timed out. Please try again.';
 $string['payment_verification'] = 'Verifying payment...';
 

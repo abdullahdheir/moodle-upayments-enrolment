@@ -38,7 +38,7 @@ class edit extends \moodleform {
             $mform->setDefault('currency', $instance->currency);
         }
 
-        $this->add_action_buttons(true, get_string('updatemethod', 'enrol'));
+        $this->add_action_buttons(true, get_string('savechanges', 'enrol_upayment'));
     }
 
     public function validation($data, $files) {

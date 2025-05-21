@@ -244,3 +244,4 @@ $string['invoice_id'] = 'Invoice ID'; // UPayments parameter
 $string['trn_udf'] = 'TRN UDF'; // UPayments parameter
 $string['updatemethod'] = 'Update Method';
 $string['addmethod'] = 'Add Method';
+$string['savechanges'] = 'Save Changes';

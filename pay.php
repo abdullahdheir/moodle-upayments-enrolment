@@ -14,7 +14,7 @@ $course = $DB->get_record('course', array('id' => $instance->courseid), '*', MUS
 $context = context_course::instance($course->id, MUST_EXIST);
 
 // Check if user is already enroled
-if (is_enroled($context, $USER)) {
+if (is_enrolled($context, $USER)) {
     redirect(new moodle_url('/course/view.php', array('id' => $course->id)));
 }
 

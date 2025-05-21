@@ -34,7 +34,7 @@ class enrol_upayment_plugin extends enrol_plugin {
             return '';
         }
         $context = context_course::instance($instance->courseid);
-        if (is_enroled($context, $USER)) {
+        if (is_enrolled($context, $USER)) {
             return '';
         }
         // Get the course cost from teacher settings

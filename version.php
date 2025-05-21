@@ -30,3 +30,4 @@ $plugin->requires  = 2022041900;        // Requires this Moodle version (4.0).
 $plugin->component = 'enrol_upayment';  // Full name of the plugin (used for diagnostics).
 $plugin->maturity  = MATURITY_STABLE;   // This is considered as stable code.
 $plugin->release   = '1.0.9';           // Human-readable version name.
+$plugin->requires_php_extension = 'curl'; // Required PHP extension.

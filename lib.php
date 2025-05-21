@@ -226,20 +226,38 @@ function enrol_upayment_make_api_request($endpoint, $data = null) {
         $url = $apiurl . $endpoint;
         
         // Initialize curl
-        $curl = new curl();
-        $curl->setHeader([
-            'Authorization' => 'Bearer ' . $token,
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json'
+        $ch = curl_init($url);
+        
+        // Set cURL options
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $token,
+            'Accept: application/json',
+            'Content-Type: application/json'
         ]);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30); // Set a timeout
         
-        // Make the request
-        $response = $curl->post($url, json_encode($data));
+        // Execute the request and get the response
+        $response = curl_exec($ch);
         
-        // Check for curl errors
-        if ($curl->get_errno()) {
-            error_log("UPayments API Error: " . $curl->error);
-            throw new moodle_exception('api_error', 'enrol_upayment', '', $curl->error);
+        // Check for cURL errors
+        if (curl_errno($ch)) {
+            $error_msg = curl_error($ch);
+            curl_close($ch);
+            error_log("UPayments API Error (curl_exec): " . $error_msg);
+            throw new moodle_exception('api_error', 'enrol_upayment', '', $error_msg);
+        }
+        
+        // Get HTTP status code
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        
+        // Check HTTP status code (e.g., 200 for success)
+        if ($httpcode !== 200) {
+             error_log("UPayments API HTTP Error: " . $httpcode . " Response: " . $response);
+             throw new moodle_exception('api_error_http', 'enrol_upayment', '', "HTTP Status Code: " . $httpcode);
         }
         
         // Decode response

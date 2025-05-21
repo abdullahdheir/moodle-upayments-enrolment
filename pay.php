@@ -23,7 +23,7 @@ $teacher_cost = $DB->get_field('enrol_upayment_costs', 'cost',
     ['courseid' => $instance->courseid, 'userid' => $instance->customint1]);
 
 // If no teacher cost set, use default cost
-$cost = $teacher_cost ?: $instance->cost;
+$cost = $instance->cost;
 
 // Prepare payment data
 $payment_data = array(

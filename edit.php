@@ -26,31 +26,15 @@ $mform = new enrol_upayment_edit_form(null, array($instance, $course));
 if ($mform->is_cancelled()) {
     redirect($return);
 } else if ($data = $mform->get_data()) {
-    if ($data->roleid != $instance->roleid) {
-        $instance->roleid = $data->roleid;
+    // Update instance fields
+    if (isset($data->cost)) {
+        $instance->cost = $data->cost;
         $DB->update_record('enrol', $instance);
     }
-    
-    // Update teacher cost
-    if (isset($data->teacher_cost)) {
-        $cost_record = $DB->get_record('enrol_upayment_costs', 
-            ['courseid' => $course->id, 'userid' => $USER->id]);
-            
-        if ($cost_record) {
-            $cost_record->cost = $data->teacher_cost;
-            $cost_record->timemodified = time();
-            $DB->update_record('enrol_upayment_costs', $cost_record);
-        } else {
-            $DB->insert_record('enrol_upayment_costs', [
-                'courseid' => $course->id,
-                'userid' => $USER->id,
-                'cost' => $data->teacher_cost,
-                'timecreated' => time(),
-                'timemodified' => time()
-            ]);
-        }
+    if (isset($data->currency)) {
+        $instance->currency = $data->currency;
+        $DB->update_record('enrol', $instance);
     }
-    
     redirect($return);
 }
 

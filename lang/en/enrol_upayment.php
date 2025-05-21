@@ -165,36 +165,6 @@ $string['transaction_export_encoding_csv'] = 'UTF-8';
 $string['transaction_export_encoding_excel'] = 'UTF-8';
 $string['transaction_export_encoding_pdf'] = 'UTF-8';
 
-// Teacher cost strings
-$string['teachercost'] = 'Teacher Cost';
-$string['teachercost_desc'] = 'Cost set by teacher for this course';
-$string['teachercost_help'] = 'The cost set by the teacher for enroling in this course. This will override the default cost if set.';
-$string['teachercost_not_set'] = 'No teacher cost set';
-$string['teachercost_set'] = 'Teacher cost set to {$a}';
-$string['teachercost_updated'] = 'Teacher cost updated to {$a}';
-$string['teachercost_deleted'] = 'Teacher cost deleted';
-$string['teachercost_error'] = 'Error setting teacher cost';
-$string['teachercost_invalid'] = 'Invalid teacher cost';
-$string['teachercost_required'] = 'Teacher cost is required';
-$string['teachercost_numeric'] = 'Teacher cost must be numeric';
-$string['teachercost_positive'] = 'Teacher cost must be positive';
-$string['teachercost_max'] = 'Teacher cost cannot exceed {$a}';
-$string['teachercost_min'] = 'Teacher cost cannot be less than {$a}';
-$string['teachercost_default'] = 'Default cost';
-$string['teachercost_default_desc'] = 'Default cost for courses when no teacher cost is set';
-$string['teachercost_default_help'] = 'The default cost for courses when no teacher cost is set. This will be used if no teacher cost is set for a course.';
-$string['teachercost_default_not_set'] = 'No default cost set';
-$string['teachercost_default_set'] = 'Default cost set to {$a}';
-$string['teachercost_default_updated'] = 'Default cost updated to {$a}';
-$string['teachercost_default_deleted'] = 'Default cost deleted';
-$string['teachercost_default_error'] = 'Error setting default cost';
-$string['teachercost_default_invalid'] = 'Invalid default cost';
-$string['teachercost_default_required'] = 'Default cost is required';
-$string['teachercost_default_numeric'] = 'Default cost must be numeric';
-$string['teachercost_default_positive'] = 'Default cost must be positive';
-$string['teachercost_default_max'] = 'Default cost cannot exceed {$a}';
-$string['teachercost_default_min'] = 'Default cost cannot be less than {$a}';
-
 // UPayments API settings
 $string['token'] = 'API Token';
 $string['token_desc'] = 'Your UPayments API token for production';

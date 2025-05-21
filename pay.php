@@ -23,6 +23,7 @@ $cost = $instance->cost;
 
 // Prepare payment data in UPayments API format
 $orderid = uniqid('MOODLE_UPAYMENT_COURSE_'.$course->id.'_');
+$orderid = substr($orderid, 0, 30);
 $payment_data = [
     'products' => [
         [

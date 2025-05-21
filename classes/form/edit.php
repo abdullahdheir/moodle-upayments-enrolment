@@ -6,6 +6,9 @@ defined('MOODLE_INTERNAL') || die();
 $id = required_param('id', PARAM_INT);
 
 require_once($CFG->libdir.'/formslib.php');
+require_once('../../config.php');
+require_once('lib.php');
+require_once($CFG->libdir.'/enrollib.php');
 
 class edit extends \moodleform {
     public function definition() {

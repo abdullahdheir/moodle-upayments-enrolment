@@ -48,14 +48,6 @@ class enrol_upayment_plugin extends enrol_plugin {
         global $DB;
         $instance = $DB->get_record('enrol', ['id' => $instanceid], '*', MUST_EXIST);
         $this->enrol_user($instance, $userid, $instance->roleid, time(), 0, ENROL_USER_ACTIVE);
-        // Log transaction
-        $DB->insert_record('enrol_upayment_transactions', [
-            'userid' => $userid,
-            'instanceid' => $instanceid,
-            'trackid' => $trackid,
-            'amount' => $amount,
-            'timecreated' => time()
-        ]);
     }
     public function add_default_instance($course) {
         $fields = array(

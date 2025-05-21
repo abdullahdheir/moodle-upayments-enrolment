@@ -2,7 +2,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($hassiteconfig) {
-    $settings = new admin_settingpage('enrolsettingsupayment', get_string('pluginname', 'enrol_upayment'));
+    $settings = new admin_settingpage('enrolsettingsupayment_config', get_string('pluginname', 'enrol_upayment'));
     $ADMIN->add('enrolments', $settings);
 
     // General settings

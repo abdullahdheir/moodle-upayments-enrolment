@@ -28,13 +28,14 @@ $payment_data = [
     'products' => [
         [
             'name' => $course->fullname,
+            'description' => get_string('orderdescription', 'enrol_upayment', $course->fullname),
             'price' => $cost,
             'quantity' => 1
         ]
     ],
     'order' => [
         'id' => $orderid,
-        'description' => get_string('orderdescription', 'enrol_upayment', $course->fullname),
+        'description' => $course->fullname ? $course->fullname : "Payment for course",
         'currency' => $instance->currency,
         'amount' => $cost,
     ],
@@ -54,6 +55,8 @@ $payment_data = [
     'cancelUrl' => $CFG->wwwroot . '/enrol/upayment/cancel.php?instanceid=' . $instance->id . '&sesskey=' . sesskey(),
     'notificationUrl' => $CFG->wwwroot . '/enrol/upayment/notification.php',
 ];
+
+error_log(json_encode($payment_data, true));
 
 try {
     // Make API request

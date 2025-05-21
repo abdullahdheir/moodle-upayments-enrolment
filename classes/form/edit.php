@@ -3,10 +3,14 @@ namespace enrol_upayment\form;
 
 defined('MOODLE_INTERNAL') || die();
 
+$id = required_param('id', PARAM_INT);
+
 require_once($CFG->libdir.'/formslib.php');
 
 class edit extends \moodleform {
     public function definition() {
+        $instance = $DB->get_record('enrol', array('id' => $id, 'enrol' => 'upayment'), '*', MUST_EXIST);
+
         $mform = $this->_form;
         $mform->addElement('header', 'header', get_string('pluginname', 'enrol_upayment'));
 
@@ -34,7 +38,7 @@ class edit extends \moodleform {
             $mform->setDefault('currency', $instance->currency);
         }
 
-        $this->add_action_buttons(true, get_string('addmethod', 'enrol'));
+        $this->add_action_buttons(true, get_string('updatemethod', 'enrol'));
     }
 
     public function validation($data, $files) {

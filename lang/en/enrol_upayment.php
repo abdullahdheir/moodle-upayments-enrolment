@@ -242,3 +242,5 @@ $string['refund_order_id'] = 'Refund Order ID'; // UPayments parameter
 $string['payment_type'] = 'Payment Type'; // UPayments parameter
 $string['invoice_id'] = 'Invoice ID'; // UPayments parameter
 $string['trn_udf'] = 'TRN UDF'; // UPayments parameter
+$string['updatemethod'] = 'Update Method';
+$string['addmethod'] = 'Add Method';

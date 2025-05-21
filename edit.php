@@ -42,6 +42,5 @@ $PAGE->set_title(get_string('pluginname', 'enrol_upayment'));
 $PAGE->set_heading($course->fullname);
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('pluginname', 'enrol_upayment'));
 $mform->display();
 echo $OUTPUT->footer(); 

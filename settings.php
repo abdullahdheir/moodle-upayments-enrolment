@@ -41,7 +41,7 @@ if ($hassiteconfig) {
     $settings->add(new admin_setting_configtext('enrol_upayment/sandbox_apiurl',
         get_string('sandbox_apiurl', 'enrol_upayment'),
         get_string('sandbox_apiurl_desc', 'enrol_upayment'),
-        'https://sandbox.uapi.upayments.com/api/v1/', PARAM_URL));
+        'https://sandboxapi.upayments.com/api/v1/', PARAM_URL));
 
     // Default Cost Settings
     $settings->add(new admin_setting_heading('enrol_upayment_cost_settings',

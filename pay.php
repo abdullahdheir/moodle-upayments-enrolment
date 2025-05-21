@@ -21,26 +21,38 @@ if (is_enrolled($context, $USER)) {
 // Use the instance cost directly
 $cost = $instance->cost;
 
-// Prepare payment data
-$payment_data = array(
-    'order_id' => uniqid('MOODLE_'),
-    'customer' => array(
-        'uniqueId' => $USER->id,
-        'name' => fullname($USER),
-        'email' => $USER->email
-    ),
-    'products' => array(
-        array(
+// Prepare payment data in UPayments API format
+$orderid = uniqid('MOODLE_UPAYMENT_COURSE_'.$course->id.'_');
+$payment_data = [
+    'products' => [
+        [
             'name' => $course->fullname,
             'price' => $cost,
             'quantity' => 1
-        )
-    ),
-    'currency' => $instance->currency,
-    'amount' => $cost,
-    'redirect_url' => $CFG->wwwroot . '/enrol/upayment/notification.php',
-    'cancel_url' => $CFG->wwwroot . '/course/view.php?id=' . $course->id
-);
+        ]
+    ],
+    'order' => [
+        'id' => $orderid,
+        'description' => get_string('orderdescription', 'enrol_upayment', $course->fullname),
+        'currency' => $instance->currency,
+        'amount' => $cost,
+    ],
+    'reference' => [
+        'id' => $orderid
+    ],
+    'paymentGateway' => [
+        'src' => 'knet',
+    ],
+    'customer' => [
+        'uniqueId' => $USER->id,
+        'name' => fullname($USER),
+        'email' => $USER->email,
+    ],
+    'language' => current_language(),
+    'returnUrl' => $CFG->wwwroot . '/enrol/upayment/success.php?instanceid=' . $instance->id . '&sesskey=' . sesskey(),
+    'cancelUrl' => $CFG->wwwroot . '/enrol/upayment/cancel.php?instanceid=' . $instance->id . '&sesskey=' . sesskey(),
+    'notificationUrl' => $CFG->wwwroot . '/enrol/upayment/notification.php',
+];
 
 try {
     // Make API request

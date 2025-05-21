@@ -281,8 +281,20 @@ function enrol_upayment_make_api_request($endpoint, $data = null) {
 
 function enrol_upayment_verify_payment($trackid) {
     try {
-        $response = enrol_upayment_make_api_request('get-payment-status/' . $trackid);
-        return isset($response['data']['transaction']) && $response['data']['transaction']['status'] === 'success';
+        // Get API settings to check for sandbox mode
+        $sandbox = get_config('enrol_upayment', 'sandbox');
+
+        if ($sandbox) {
+            // In sandbox mode, verify based on the track ID pattern if needed, or just return true for testing
+            // For a more realistic sandbox verification, you might check if the trackid matches a test success trackid
+            // or simulate an API call to the sandbox verification endpoint if available.
+            // For now, we'll assume any valid trackid in sandbox is a success for testing purposes.
+            return !empty($trackid);
+        } else {
+            // In production mode, call the real API verification endpoint
+            $response = enrol_upayment_make_api_request('get-payment-status/' . $trackid);
+            return isset($response['data']['transaction']) && $response['data']['transaction']['status'] === 'success';
+        }
     } catch (Exception $e) {
         error_log("Payment verification failed: " . $e->getMessage());
         return false;

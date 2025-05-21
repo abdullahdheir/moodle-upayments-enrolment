@@ -47,7 +47,7 @@ echo $OUTPUT->header();
 ?>
 <div class="payment-processing-container">
     <div class="payment-processing-spinner"></div>
-    <div class="payment-processing-message"><?php echo $message; ?></div>
+    <div class="payment-processing-message"><?php echo get_string('payment_processing', 'enrol_upayment'); ?></div>
     <?php if ($status === 'error' || $status === 'cancelled' || $status === 'timeout'): ?>
         <div class="payment-processing-actions">
             <a href="<?php echo new moodle_url('/enrol/upayment/pay.php', array('instanceid' => $instanceid, 'sesskey' => sesskey())); ?>" 
@@ -65,7 +65,7 @@ if (!empty($upayments_params['track_id']) && !empty($upayments_params['order_id'
     // Verify payment with UPayments API
     if (enrol_upayment_verify_payment($upayments_params['track_id'])) {
         // Check if payment was already processed
-        $existing = $DB->get_record('enrol_upayment_transactions', array('trackid' => $upayments_params['track_id']));
+        $existing = $DB->get_record('enrol_upayment_transactions', array('track_id' => $upayments_params['track_id']));
         if (!$existing) {
             // Log transaction
             // Ensure amount and currency are set in params for logging if not provided by gateway

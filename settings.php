@@ -43,21 +43,6 @@ if ($hassiteconfig) {
         get_string('sandbox_apiurl_desc', 'enrol_upayment'),
         'https://sandboxapi.upayments.com/api/v1/', PARAM_URL));
 
-    // Default Cost Settings
-    $settings->add(new admin_setting_heading('enrol_upayment_cost_settings',
-        get_string('cost_settings', 'enrol_upayment'),
-        get_string('cost_settings_desc', 'enrol_upayment')));
-
-    $settings->add(new admin_setting_configtext('enrol_upayment/cost',
-        get_string('cost', 'enrol_upayment'),
-        get_string('cost_desc', 'enrol_upayment'),
-        '0', PARAM_FLOAT));
-
-    $settings->add(new admin_setting_configtext('enrol_upayment/currency',
-        get_string('currency', 'enrol_upayment'),
-        get_string('currency_desc', 'enrol_upayment'),
-        'KWD', PARAM_TEXT));
-
     // Transaction Log
     $settings->add(new admin_setting_heading('enrol_upayment_transactions', 
         get_string('transactions', 'enrol_upayment'),

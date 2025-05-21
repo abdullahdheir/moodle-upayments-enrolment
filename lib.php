@@ -95,8 +95,8 @@ class enrol_upayment_plugin extends enrol_plugin {
         if (!has_capability('enrol/upayment:config', $context)) {
             return null;
         }
-        $button = new enrol_user_button($instance, $context);
-        return $button;
+        // Return null as payment plugins don't typically have a standard manual enrol button here.
+        return null;
     }
     public function get_action_icons(stdClass $instance) {
         global $OUTPUT;

@@ -96,7 +96,8 @@ $PAGE->set_heading(get_string('payment_' . $status, 'enrol_upayment'));
 if ($status === 'success') {
     // Redirect to course page after 3 seconds
     $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
-    echo html_writer::script("setTimeout(function() { window.location.href = \'" . $courseurl . "\'; }, 3000);");
+
+    redirect($courseurl, '', 3);
 } else if ($status === 'error' || $status === 'cancelled' || $status === 'timeout') {
     // Redirect back to course page with notification
     $returnurl = new moodle_url('/course/view.php', array('id' => $course->id));

@@ -227,3 +227,18 @@ $string['sandbox_mode_disabled'] = 'Sandbox mode is disabled. All transactions w
 // Add missing strings
 $string['enrolcost'] = 'Enrolment cost';
 $string['paybutton'] = 'Pay';
+
+// Missing strings identified from codebase scan:
+$string['orderdescription'] = 'Course enrolment: {$a}'; // Used for API description
+$string['try_again'] = 'Try Again'; // Used on processing error page
+$string['result'] = 'Result'; // UPayments parameter
+$string['post_date'] = 'Post Date'; // UPayments parameter
+$string['tran_id'] = 'Transaction ID'; // UPayments parameter (might be duplicate of transactionid)
+$string['ref'] = 'Reference'; // UPayments parameter
+$string['auth'] = 'Auth Code'; // UPayments parameter
+$string['order_id'] = 'Order ID'; // UPayments parameter (might be duplicate of transactionid/trackid)
+$string['requested_order_id'] = 'Requested Order ID'; // UPayments parameter
+$string['refund_order_id'] = 'Refund Order ID'; // UPayments parameter
+$string['payment_type'] = 'Payment Type'; // UPayments parameter
+$string['invoice_id'] = 'Invoice ID'; // UPayments parameter
+$string['trn_udf'] = 'TRN UDF'; // UPayments parameter

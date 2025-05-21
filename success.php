@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
-require_once($CFG->libdir.'/enrollib.php');
 require_once('lib.php');
+require_once($CFG->libdir.'/enrollib.php');
 
 $instanceid = required_param('instanceid', PARAM_INT);
 $orderid = required_param('orderid', PARAM_ALPHANUM);

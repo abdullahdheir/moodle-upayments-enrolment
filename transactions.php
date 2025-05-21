@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
-require_once($CFG->libdir.'/tablelib.php');
 require_once('lib.php');
+require_once($CFG->libdir.'/enrollib.php');
 
 require_login();
 require_capability('enrol/upayment:viewtransactions', context_system::instance());

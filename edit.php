@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
-require_once($CFG->libdir.'/enrollib.php');
 require_once('lib.php');
+require_once($CFG->libdir.'/enrollib.php');
 
 $courseid = required_param('courseid', PARAM_INT);
 $id = required_param('id', PARAM_INT);

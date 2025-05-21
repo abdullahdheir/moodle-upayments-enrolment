@@ -44,11 +44,13 @@ class enrol_upayment_plugin extends enrol_plugin {
         $html = html_writer::tag('p', get_string('enrolcost', 'enrol_upayment').": ".$cost);
         return $html.$OUTPUT->render($btn);
     }
+    
     public function enrol_user_via_callback($instanceid, $userid, $trackid, $amount) {
         global $DB;
         $instance = $DB->get_record('enrol', ['id' => $instanceid], '*', MUST_EXIST);
         $this->enrol_user($instance, $userid, $instance->roleid, time(), 0, ENROL_USER_ACTIVE);
     }
+
     public function add_default_instance($course) {
         $fields = array(
             'status'          => $this->get_config('status'),

@@ -21,7 +21,7 @@ if (!enrol_is_enabled('upayment')) {
     redirect($return);
 }
 
-$mform = new enrol_upayment_edit_form(null, array($instance, $course));
+$mform = new \enrol_upayment\form\edit(null, array($instance, $course));
 
 if ($mform->is_cancelled()) {
     redirect($return);

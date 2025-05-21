@@ -221,3 +221,7 @@ $string['sandbox_apiurl'] = 'Sandbox API URL';
 $string['sandbox_apiurl_desc'] = 'UPayments sandbox API URL (leave empty for default)';
 $string['sandbox_mode_enabled'] = 'Sandbox mode is enabled. All transactions will be test transactions.';
 $string['sandbox_mode_disabled'] = 'Sandbox mode is disabled. All transactions will be real transactions.';
+
+// Add missing strings
+$string['enrolcost'] = 'Enrolment cost';
+$string['paybutton'] = 'Pay';

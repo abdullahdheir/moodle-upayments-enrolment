@@ -1,9 +1,11 @@
 <?php
+namespace enrol_upayment\form;
+
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir.'/formslib.php');
 
-class enrol_upayment_edit_form extends moodleform {
+class edit extends \moodleform {
     public function definition() {
         $mform = $this->_form;
         $mform->addElement('header', 'header', get_string('pluginname', 'enrol_upayment'));

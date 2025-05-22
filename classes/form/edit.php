@@ -3,6 +3,10 @@ namespace enrol_upayment\form;
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once('../../config.php');
+require_once('lib.php');
+require_once($CFG->libdir.'/enrollib.php');
+
 $id = required_param('id', PARAM_INT);
 
 require_once($CFG->libdir.'/formslib.php');
@@ -10,7 +14,10 @@ require_once($CFG->libdir.'/formslib.php');
 class edit extends \moodleform {
     public function definition() {
         global $DB;
-        $instance = $DB->get_record('enrol', array('id' => $id, 'enrol' => 'upayment'), '*', MUST_EXIST);
+        
+        if(isset($DB)){
+            $instance = $DB->get_record('enrol', array('id' => $id, 'enrol' => 'upayment'), '*', MUST_EXIST);
+        }
 
         $mform = $this->_form;
         $mform->addElement('header', 'header', get_string('pluginname', 'enrol_upayment'));

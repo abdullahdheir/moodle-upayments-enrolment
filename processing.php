@@ -98,7 +98,7 @@ if ($status === 'success') {
     $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
 
     
-    redirect($courseurl,  get_string('payment_cancelled', 'enrol_upayment'), 3, \core\output\notification::NOTIFY_ERROR);
+    redirect($courseurl,  get_string('payment_success', 'enrol_upayment'), 3, \core\output\notification::NOTIFY_ERROR);
 } else if ($status === 'error' || $status === 'cancelled' || $status === 'timeout') {
     // Redirect back to course page with notification
     $returnurl = new moodle_url('/course/view.php', array('id' => $course->id));

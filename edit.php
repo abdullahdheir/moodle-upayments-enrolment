@@ -3,7 +3,7 @@ require_once('../../config.php');
 require_once('lib.php');
 require_once($CFG->libdir.'/enrollib.php');
 
-$courseid = optional_param('courseid', PARAM_INT);
+$courseid = optional_param('courseid',0, PARAM_INT);
 
 if(!$courseid){
    redirect($CFG->wwwroot . '/enrol/instances.php');

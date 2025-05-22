@@ -4,9 +4,11 @@ require_once('lib.php');
 require_once($CFG->libdir.'/enrollib.php');
 
 $courseid = optional_param('courseid', PARAM_INT);
+
 if(!$courseid){
    redirect($CFG->wwwroot . '/enrol/instances.php');
 }
+
 $id = required_param('id', PARAM_INT);
 
 $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
